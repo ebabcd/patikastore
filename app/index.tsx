@@ -1,29 +1,38 @@
 import { Colors } from "@/app-example/constants/theme";
-import { Text, View, Button, StyleSheet, TouchableOpacity, FlatList } from "react-native";
-import news_data from './news_data.json';
-import NewsCard from "./components/NewsCard";
+import { Text, View, StyleSheet, FlatList } from "react-native";
+import React from "react";
+import products_data from './product_data.json';
+import Products from "./components/ProductsFile";
+
+
+
 
 export default function Index() {
   return (
     <View style={styles.container}>
-
-
+      <Text style={styles.text}>PATIKASTORE</Text>
       <FlatList
-        data={news_data}
-        renderItem={({ item }) => <NewsCard news={item} />}
-      />
-
+      keyExtractor={(item) => item.id.toString()}
+    data={products_data} 
+    renderItem={({item}) => <Products product={item}/>}
+    numColumns={2}
+  />
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container:{
+    flex:1,
     backgroundColor: '#eceff1',
   },
+  text:{
+    color: 'purple',
+    fontSize: 35,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  }
 
-})
 
+});
 
